@@ -1,0 +1,39 @@
+		try {
+			totalCost += wallE.goTo(paris);
+			Out.println(wallE.getId() + " traveled to " + wallE.getLocation() + ". Total cost now" + totalCost + ".");
+		} catch (Exception e) {
+			Out.println("Error: unexpected exception: " + e.toString());
+		}
+		
+		
+		
+		wallE.load(booze);
+		wallE.unload();
+		wallE.load(booze);
+		wallE.load(feather);
+		totalCost += wallE.goTo(paris);
+		totalCost += wallE.goTo(ny);
+		Out.println(wallE);
+		Out.println(totalCost);
+		lastUnload = wallE.unload();
+		Out.println(lastUnload);
+		Out.println();
+		rumRunner.load(booze);
+		rumRunner.load(teddybear);
+		totalCost += rumRunner.goTo(paris);
+		totalCost += rumRunner.goTo(ny);
+		Out.println(rumRunner);
+		Out.println(totalCost);
+		lastUnload = rumRunner.unload();
+		Out.println(lastUnload);
+		Out.println();
+		fireflash.load(booze);
+		fireflash.load(teddybear);
+		totalCost += fireflash.goTo(paris);
+		totalCost += fireflash.goTo(ny);
+		Out.println(fireflash);
+		Out.println(totalCost);
+		lastUnload = fireflash.unload();
+		Out.println(lastUnload);
+		Out.println();
+>>> 
