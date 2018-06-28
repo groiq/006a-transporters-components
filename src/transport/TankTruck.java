@@ -2,7 +2,7 @@ package transport;
 
 import static transport.CargoType.*;
 
-public class TankTruck extends ContainerTruck {
+public class TankTruck extends Truck {
 	
 	/*
 	 * A subclass of ContainerTruck for transporting liquid cargo.
@@ -13,8 +13,4 @@ public class TankTruck extends ContainerTruck {
 		super(id, maxWeight, costPerKm, firstLocation);
 	}
 
-	@Override
-	CargoType getCargoType() {
-		return liquid;
-	}
 }

@@ -2,28 +2,22 @@ package transport;
 
 public class CargoPlane extends Transporter {
 	
-	/*
-	 * Represents a cargo plane.
-	 * Has an additional field named airportCost that represents a fixed cost per journey.
-	 * Constructor and toString() are expanded accordingly.
-	 * The goTo() method adds the airportCost to the result of super.goTo().
-	 */
+	final Plane vehicle;
 	
-	private final double airportCost;
-
 	public CargoPlane(String id, double maxWeight, double costPerKm, double airportCost, Location firstLocation) {
-		super(id, maxWeight, costPerKm, firstLocation);
-		this.airportCost = airportCost;
+		super(id, maxWeight, firstLocation);
+		this.vehicle = new Plane(costPerKm, airportCost);
 	}
 
 	double getAirportCost() {
-		return airportCost;
+		return vehicle.getAirportCost();
+	}
+	
+	@Override
+	Vehicle getVehicle() {
+		return this.vehicle;
 	}
 
-	@Override
-	double goTo(Location destination) {
-		return super.goTo(destination) + this.getAirportCost();
-	}
 
 	@Override
 	public String toString() {

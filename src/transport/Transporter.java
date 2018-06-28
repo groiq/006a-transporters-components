@@ -16,15 +16,13 @@ abstract class Transporter {
 	
 	private final String id;
 	private final double maxWeight;
-	private final double costPerKm;
 	
 	private Location location;
 	private Cargo cargo;
 	
-	public Transporter(String id, double maxWeight, double costPerKm, Location firstLocation) {
+	public Transporter(String id, double maxWeight, Location firstLocation) {
 		this.id = id;
 		this.maxWeight = maxWeight;
-		this.costPerKm = costPerKm;
 		this.cargo = null;
 		this.location = firstLocation;
 	}
@@ -54,7 +52,11 @@ abstract class Transporter {
 	}
 
 	double getCostPerKm() {
-		return costPerKm;
+		return getVehicle().getCostPerKm();
+	}
+	
+	Vehicle getVehicle() {
+		return null;
 	}
 	
 	// A transporter can only load solid or liquid cargo. The type of cargo is designated by a fake getter.
@@ -96,10 +98,8 @@ abstract class Transporter {
 	 */
 
 	double goTo(Location destination) {
-		double result = this.getLocation().getDistance(destination);
-		result = result * costPerKm;
 		this.setLocation(destination);
-		return result;
+		return getVehicle().getTravelCost(this.getLocation(),destination);
 	}
 	
 	/*
